@@ -1,0 +1,33 @@
+{% extends "../base/base.html" %}
+{% load humanize %}
+{%block content%}
+{%include '../base/nav_bar.html'%}
+
+</section>
+<div class="col-lg-10 mb-̃10">
+  <section id="gallery" style="margin-top:1.5em;">
+    {% for post in object-list %}
+    <div class="container">
+      <div class="row">
+      <div class="col-lg-8 mb-8" style="margin-top:1.5em;">
+      <div class="card">
+        <img src="{{ post.image.url}}" alt="" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}} |  <span>{{post.date|naturaltime}}</span></h5>
+          <p class="card-text">{{post.body}}</p>
+         <a href="{{ post.get_absolute_url }}" class="btn btn-outline-success btn-sm">Read More</a>
+          <a href="/category/{{post.category}}" class="btn btn-outline-danger btn-sm">{{post.category}}</a>
+          <ul>Tags :
+            {% for tag in post.tags.all %}
+            <li><a href="{% url 'posts_by_tag' tag.slug %}">{{tag}}</a></li>
+            {%endfor%}
+          </ul>
+        </div>
+       </div>
+      </div>
+    </div>
+  </div>
+  </section>
+  {%endfor%}
+
+{%endblock%}

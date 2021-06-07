@@ -1,0 +1,31 @@
+{%extends '../base/base.html'%}
+{%block content%}
+
+<div class="pos-f-t">
+    <div class="collapse" id="navbarToggleExternalContent">
+      <div class="bg-success p-4">
+        <h5 class="text-white h4"><a href="{% url 'home' %}">Home</h5>
+        <span class="text-white"><a href="{{random_post.get_absolute_url}}">Random</a></span>
+        <span class="text-white"><a href="{% url 'contact' %}">contact</a></span>
+        
+        <div class="input-group">
+        <form action="{% url 'search_results' %}" method="get">
+          <div class="form-outline">
+            <input id="search-input" name="q" type="search" id="form1" class="form-control" />
+            <label class="form-label" for="form1">Search</label>
+          </div>
+          <button id="search-button" type="submit" class="btn btn-primary">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </form>
+      </div>
+    </div>
+    <nav class="navbar navbar-dark bg-success">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </nav>
+  </div>
+
+{%endblock%}
